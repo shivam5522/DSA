@@ -8,13 +8,12 @@ public:
         }
         for(int i=0;i<nums.size();i++){
             if(dic.find(target-nums[i])!=dic.end()){
-                a=i;
-                b=dic[target-nums[i]];
-                if(a!=b){
-                break;
+                int temp=dic[target-nums[i]];
+                if(i!=temp){
+                    return{i,temp};
                 }
             }
         }
-        return {a,b};
+        return {0,0};
     }
 };
