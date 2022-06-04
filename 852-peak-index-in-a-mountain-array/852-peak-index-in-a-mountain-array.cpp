@@ -9,7 +9,7 @@ public:
                 return mid;
             }
             else if(arr[mid]<arr[mid+1] && arr[mid]>arr[mid-1]){
-                low=mid;
+                low=mid+1;
             }
             else{
                 high=mid;
