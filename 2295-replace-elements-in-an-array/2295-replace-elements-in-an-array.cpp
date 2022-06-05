@@ -12,27 +12,10 @@ public:
             nums_d[nums[i]]=i;
         }
         for(int i=0;i<operations.size();i++){
-            int temp=nums_d[operations[i][0]];
-            nums_d.erase(operations[i][0]);
-            nums_d[operations[i][1]]=temp;
+            nums[nums_d[operations[i][0]]]=operations[i][1];
+            nums_d[operations[i][1]] = nums_d[operations[i][0]];
         }
-        	vector<pair<int, int>> vec;
 
-          map<int, int> :: iterator it2;
-          for (it2=nums_d.begin(); it2!=nums_d.end(); it2++) 
-          {
-            vec.push_back(make_pair(it2->first, it2->second));
-          }
-
-            // // sort the vector by increasing order of its pair's second value
-        vector<int> final;
-          sort(vec.begin(), vec.end(), sortByVal); 
-        
-            for (int i = 0; i < vec.size(); i++)
-	{
-		final.push_back(vec[i].first);
-            }
-
-        return final;
+        return nums;
     }
 };
