@@ -11,11 +11,26 @@ public:
 
 class Solution {
 public:
-    Node* flatten(Node* head, Node* rest = nullptr) {
-  if (!head) return rest;
-  head->next = flatten(head->child, flatten(head->next, rest));
-  if (head->next) head->next->prev = head;
-  head->child = nullptr;
-  return head;
-}
+    Node* flatten(Node* head) {
+        Node* lead=head;
+        Node* ptr=NULL;      
+        Node* beta=NULL;   // beta is child node
+        while(head){
+            if(head->child){
+                ptr=head->next;
+                beta=head->child;
+                head->child=NULL;
+                head->next=beta;
+                beta->prev=head;
+                while(beta->next){
+                    beta=beta->next;
+                }
+                if(ptr)
+                    ptr->prev=beta;
+                beta->next=ptr;
+            }
+            head=head->next;
+        }
+        return lead;
+    }
 };
