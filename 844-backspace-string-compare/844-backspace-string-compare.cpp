@@ -11,7 +11,6 @@ public:
             }
         }
         while(!st.empty()){
-            cout<<st.top()<<endl;
             s1+=st.top();
             st.pop();
         }
